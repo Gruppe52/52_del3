@@ -14,7 +14,8 @@ public class Texts {
 		"Status: ",
 		"Spiller %d : %d  *** ",
 		"Spiller %d : Slog to ens tillykke. Du m� sl� igen \n",
-		"Hvor mange spillere?"
-		
+		"Hvor mange spillere?",
+		"Hvor mange spillere?",
+		"Skriv venligst navn på spiller "
 		};
 }

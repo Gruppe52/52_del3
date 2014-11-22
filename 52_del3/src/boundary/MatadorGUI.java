@@ -6,11 +6,17 @@
 
 package boundary;
 
-import desktop_resources.GUI;
+import java.io.File;
+
+
 import entity.PlayerList;
 import entity.Player;
+import boundaryToMatador.GUI;
 
 public class MatadorGUI {
+	
+	/** fields FILE */
+	final private File FIELDS_FILE = new File("./fields.txt");
 
 	public void gameStarter(){
 		GUI.showMessage(String.format(Texts.texts[0]));
@@ -54,10 +60,32 @@ public class MatadorGUI {
 	public void addPlayers(int pNr, PlayerList p) {
 		for (int i = 0; i < p.getPlayers().length; i++) {
 			GUI.addPlayer(p.getPlayer(i).getName(), p.getPlayer(i).getBalance());
-			}
+		}
+
 	}
 	public void askForNumberOfPlayers() {
 		GUI.showMessage(Texts.texts[7]);
 	}
 
+	public void createBoard() {
+//		GUI.create(FIELDS_FILE.toString());	
+		GUI.create("fields.txt");
+	}
+
+	public int getNumberOfPlayers() {
+		int numberOfPlayers;
+		numberOfPlayers = GUI.getUserInteger(Texts.texts[8]);
+		return numberOfPlayers;
+	}
+
+	public void setCars() {
+		GUI.setCar(1, "Børge");		
+	}
+
+	public void askForPlayerNames(PlayerList playerList, int numberOfPlayers) {
+		for (int i = 0; i < playerList.getPlayers().length; i++) {
+			String name = GUI.getUserString(Texts.texts[9] + (i + 1)); //Receives playerName from GUI
+			playerList.getPlayer(i).setName(name); //Sets playerName received from GUI
+			}		
+	}
 }

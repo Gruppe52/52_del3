@@ -1,16 +1,13 @@
-
-package entity;
-
-
-
 /**
  * Player klassen, indeholder spillerens navn og Account klassen
  * @author 52
  *
  */
+package entity;
 
 public class Player extends Account {
 	String playerName;		//Spiller navn
+	boolean isDead = false; //Variable for if player has lost all money
 	
 	/** 
 	 * @return Returnerer spillerens navn
@@ -29,7 +26,7 @@ public class Player extends Account {
 	}
 
 	public void setColor(int i) {
-		// TODO Auto-generated method stub
+
 		
 	}
 

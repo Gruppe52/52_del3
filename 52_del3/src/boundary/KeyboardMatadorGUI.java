@@ -3,7 +3,7 @@
  */
 package boundary;
 
-import desktop_resources.GUI;
+import boundaryToMatador.GUI;
 
 public class KeyboardMatadorGUI {
 
