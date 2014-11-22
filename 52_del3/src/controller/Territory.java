@@ -1,4 +1,4 @@
-package spil;
+package controller;
 /**
  * Territory class
  * @author 52

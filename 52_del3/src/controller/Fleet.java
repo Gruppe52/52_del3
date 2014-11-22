@@ -1,10 +1,10 @@
-package spil;
+package controller;
 /**
  * Fleet class
  * @author 52
  *
  */
-public class fleet extends Ownable {
+public class Fleet extends Ownable {
 	// der skal betales en afgift til ejeren.
 	// beløbet bestemmes ud fra antallet af Fleets med den samme ejer.
 	

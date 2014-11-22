@@ -1,4 +1,6 @@
-package spil;
+package controller;
+
+
 /**
  * Labor camp class
  * @author 52
