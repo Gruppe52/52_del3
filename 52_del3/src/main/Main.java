@@ -13,7 +13,7 @@ import controller.GameController;
 public class Main {
 
 	public static void main(String[] args) {
-		GameController spilController = new GameController(); //Kunne have argumenter for hvor mange spillere der er i spillet her.
+		GameController spilController = new GameController(); 
 		spilController.init();
 	}
 
