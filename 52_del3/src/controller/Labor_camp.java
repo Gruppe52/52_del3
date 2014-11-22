@@ -1,11 +1,9 @@
-package controller;
-
-
 /**
  * Labor camp class
  * @author 52
  *
  */
+package controller;
 public class Labor_camp extends Ownable {
 
 	@Override
