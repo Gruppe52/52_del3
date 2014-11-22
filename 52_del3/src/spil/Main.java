@@ -11,7 +11,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("Test");
-
+		SpilController spilController = new SpilController(); //Kunne have argumenter for hvor mange spillere der er i spillet her.
+		spilController.init();
 	}
 
 }
