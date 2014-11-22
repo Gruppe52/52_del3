@@ -1,4 +1,3 @@
-package controller;
 
 
 /**
@@ -6,7 +5,8 @@ package controller;
  * @author 52
  *
  */
-public class Labor_camp extends Ownable {
+package controller;
+public class LaborCamp extends Ownable {
 
 	@Override
 	public void getRent() {
