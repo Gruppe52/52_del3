@@ -1,4 +1,4 @@
-package spil;
+package controller;
 /**
  * Field class
  * @author 52

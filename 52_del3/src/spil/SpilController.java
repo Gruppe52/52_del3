@@ -5,13 +5,15 @@ package spil;
  *
  */
 public class SpilController {
-	
 
-	/**
-	 * Initialiserer spillet
+	/*
+	 =======================
+	 init()
+	 
+	 	Initialiserer spillet og sætter de første ting når vi starter.
+	 =======================
 	 */
-	public void init() {
-		
+	public void init() {		
 	}
 
 }

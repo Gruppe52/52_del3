@@ -1,4 +1,6 @@
-package spil;
+package controller;
+
+
 /**
  * Ownable class
  * 
@@ -14,7 +16,7 @@ public abstract class Ownable {
 	
 	public static void main(int[] args){
     
-	fleet fleet = new fleet();
+	Fleet fleet = new Fleet();
 	Labor_camp Labor_camp = new Labor_camp();
 	Territory Territory = new Territory();
 	
