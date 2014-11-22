@@ -7,12 +7,13 @@
 package boundary;
 
 import desktop_resources.GUI;
+import entity.PlayerList;
 import entity.Player;
 
 public class MatadorGUI {
 
 	public void gameStarter(){
-		GUI.showMessage(String.format(Tekster.tekster[0]));
+		GUI.showMessage(String.format(Texts.texts[0]));
 	}
 
 	public void startInfo(Player [] p){
@@ -21,15 +22,15 @@ public class MatadorGUI {
 		}
 	}
 
-	public void venterPaaSlag(int pNr){
-		GUI.showMessage(String.format(Tekster.tekster[2], pNr+1));
+	public void waitingForPlayer(int pNr){
+		GUI.showMessage(String.format(Texts.texts[2], pNr+1));
 	}
 
-	public void visSlag(int[] terninger){
+	public void showDice(int[] terninger){
 		GUI.setDice(terninger[0], terninger[1]);
 	}
 
-	public void visSpilStatus (Player [] p){
+	public void showGameStatus (Player [] p){
 		for(int j = 0; j < p.length; j++){		
 			GUI.removeAllCars(p[j].getName());
 			GUI.setCar(p[j].getBalance()+1, p[j].getName());
@@ -37,18 +38,26 @@ public class MatadorGUI {
 		}
 	}
 
-	public void visSlaaIgen(int pNr){
-		GUI.showMessage(String.format(Tekster.tekster[6], pNr+1));
+	public void showExtraTurn(int pNr){
+		GUI.showMessage(String.format(Texts.texts[6], pNr+1));
 	}
 
-	public void visSlutInfo(int pNr,Player [] p){
+	public void showEndGameInfo(int pNr,Player [] p){
 		GUI.setBalance(p[pNr].getName(), p[pNr].getBalance());
-		GUI.showMessage(String.format(Tekster.tekster[7], p[pNr].getName()));
+		GUI.showMessage(String.format(Texts.texts[7], p[pNr].getName()));
 		for(int j = 0; j < p.length; j++){
 			GUI.removeAllCars(p[j].getName());
 			GUI.setCar(1, p[j].getName());
 
 		}
 	}	
+	public void addPlayers(int pNr, PlayerList p) {
+		for (int i = 0; i < p.getPlayers().length; i++) {
+			GUI.addPlayer(p.getPlayer(i).getName(), p.getPlayer(i).getBalance());
+			}
+	}
+	public void askForNumberOfPlayers() {
+		GUI.showMessage(Texts.texts[7]);
+	}
 
 }

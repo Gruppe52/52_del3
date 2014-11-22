@@ -1,6 +1,6 @@
 package main;
 
-import controller.SpilController;
+import controller.GameController;
 
 /**
  * Main Class
@@ -13,8 +13,7 @@ import controller.SpilController;
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("Test");
-		SpilController spilController = new SpilController(); //Kunne have argumenter for hvor mange spillere der er i spillet her.
+		GameController spilController = new GameController(); //Kunne have argumenter for hvor mange spillere der er i spillet her.
 		spilController.init();
 	}
 

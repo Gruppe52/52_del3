@@ -4,8 +4,8 @@
  */
 package boundary;
 
-public class Tekster {
-	public final static String[] tekster =
+public class Texts {
+	public static final String[] texts =
 		{
 		"Spillet starter \n",
 		"Spiller nr: %d Navn: %s, Saldo: %d \n",
@@ -14,6 +14,7 @@ public class Tekster {
 		"Status: ",
 		"Spiller %d : %d  *** ",
 		"Spiller %d : Slog to ens tillykke. Du m� sl� igen \n",
-		"Spillet er slut. %s vandt"	
+		"Hvor mange spillere?"
+		
 		};
 }
