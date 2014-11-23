@@ -8,7 +8,7 @@ package boundary;
 
 import java.io.File;
 
-
+import entity.Dice;
 import entity.PlayerList;
 import entity.Player;
 import boundaryToMatador.GUI;
@@ -68,7 +68,6 @@ public class MatadorGUI {
 	}
 
 	public void createBoard() {
-//		GUI.create(FIELDS_FILE.toString());	
 		GUI.create("fields.txt");
 	}
 
@@ -78,14 +77,17 @@ public class MatadorGUI {
 		return numberOfPlayers;
 	}
 
-	public void setCars() {
-		GUI.setCar(1, "Børge");		
-	}
-
 	public void askForPlayerNames(PlayerList playerList, int numberOfPlayers) {
 		for (int i = 0; i < playerList.getPlayers().length; i++) {
 			String name = GUI.getUserString(Texts.texts[9] + (i + 1)); //Receives playerName from GUI
 			playerList.getPlayer(i).setName(name); //Sets playerName received from GUI
 			}		
+	}
+
+	public void awaitDiceThrow(int currentPlayer, Player player) {
+		GUI.getUserButtonPressed(player.getName() + Texts.texts[11], "ROLLING");
+	}
+	public void setDices(int[] faceValues) {
+		GUI.setDice(faceValues[0], faceValues[1]);		
 	}
 }

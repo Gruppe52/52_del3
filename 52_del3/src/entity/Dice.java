@@ -6,5 +6,19 @@ package entity;
  */
 
 public class Dice {
-
+	private int dice;
+	private int diceside = 6;
+	
+	public int getDice() {
+		return dice;
+	}
+	
+	public int getDiceSides() {
+		return diceside;
+	}
+	
+	public int rollDice() {
+		dice = (int)(Math.random()* diceside + 1);
+		return dice;
+	}
 }

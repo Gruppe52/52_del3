@@ -1,11 +1,10 @@
 package main;
-
 import controller.GameController;
 
 /**
  * Main Class
  * 
- * instansierer SpilController objektet, og kører Entry point metoden. Kan evt. tage imod argumenter fra cmd line.
+ * instansierer SpilController objektet, og kører controllerens init(), Entry point.
  * 
  * @author 52
  *
@@ -16,5 +15,4 @@ public class Main {
 		GameController spilController = new GameController(); 
 		spilController.init();
 	}
-
 }

@@ -16,6 +16,8 @@ public class Texts {
 		"Spiller %d : Slog to ens tillykke. Du m� sl� igen \n",
 		"Hvor mange spillere?",
 		"Hvor mange spillere?",
-		"Skriv venligst navn på spiller "
+		"Skriv venligst navn på spiller ",
+		"Spiller ",
+		", tryk for at rulle terninger"
 		};
 }

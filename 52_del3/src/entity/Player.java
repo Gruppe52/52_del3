@@ -25,12 +25,9 @@ public class Player extends Account {
 		playerName = name;		
 	}
 
-	public void setColor(int i) {
-
-		
+	public void setColor(int i) {		
 	}
-
-
+	
 }
 
 
