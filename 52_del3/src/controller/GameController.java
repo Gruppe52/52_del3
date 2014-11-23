@@ -1,8 +1,9 @@
 package controller;
-import java.io.File;
+
 import boundary.MatadorGUI;
+import entity.Board;
 import entity.PlayerList;
-import entity.Player;
+//import entity.Player;
 import entity.DiceCup;
 /**
  * SpilController som uddelegerer opgaver
@@ -14,7 +15,8 @@ public class GameController {
 	/**Creating various objects to be used by the controller */
 	MatadorGUI matadorGUI = new MatadorGUI();
 	DiceCup diceCup = new DiceCup();
-	
+	Board board = new Board();
+	PlayerList playerList = new PlayerList(2);
 	/**
 	 * Initialiserer spillet
 	 */
