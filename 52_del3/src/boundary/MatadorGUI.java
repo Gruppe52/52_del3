@@ -77,17 +77,28 @@ public class MatadorGUI {
 		return numberOfPlayers;
 	}
 
-	public void askForPlayerNames(PlayerList playerList, int numberOfPlayers) {
+	public void askForPlayerNames(PlayerList playerList) {
 		for (int i = 0; i < playerList.getPlayers().length; i++) {
 			String name = GUI.getUserString(Texts.texts[9] + (i + 1)); //Receives playerName from GUI
 			playerList.getPlayer(i).setName(name); //Sets playerName received from GUI
 			}		
 	}
-
 	public void awaitDiceThrow(int currentPlayer, Player player) {
 		GUI.getUserButtonPressed(player.getName() + Texts.texts[11], "ROLLING");
 	}
 	public void setDices(int[] faceValues) {
 		GUI.setDice(faceValues[0], faceValues[1]);		
+	}
+
+	public void setCars(PlayerList playerList) {
+		for (int i = 0; i < playerList.getPlayers().length; i++) {
+			GUI.setCar(1, playerList.getPlayer(i).getName());	
+		}
+			
+	}
+
+	public void moveCar(int diceSum, Player player) {
+		GUI.removeAllCars(player.getName());	//Removing cars from this specific player
+		GUI.setCar(diceSum, player.getName());	
 	}
 }

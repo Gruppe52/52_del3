@@ -22,11 +22,12 @@ public class GameController {
 		matadorGUI.createBoard();
 		numberOfPlayers = matadorGUI.getNumberOfPlayers();	//Gets input from user, for number of players
 		PlayerList playerList = new PlayerList(numberOfPlayers);
-		matadorGUI.askForPlayerNames(playerList, numberOfPlayers);
+		matadorGUI.askForPlayerNames(playerList);
 		matadorGUI.addPlayers(numberOfPlayers, playerList);
-		int currentPlayer = 0;
-		Player s;		//Tjek CDIO1 for hvordan denne skal bruges senere...
+		matadorGUI.setCars(playerList);
+		int currentPlayer = 0;	//Used for giving turns to players in gameLoop
 		gameLoop(currentPlayer, playerList);								//Goes to the gameLoop, where players throw dice and take turns etc. till game ends
+//		Player s;		//Tjek CDIO1 eksempel for/om hvordan denne skal bruges senere...
 	}
 	/**
 	 * The gameLoop, where players turn by turn throws dices, aqquire and lose wealth, till one person has won
@@ -38,13 +39,9 @@ public class GameController {
 			diceCup.throwDice();	//Randomizes the dices
 			int[] faceValues = diceCup.getDice();
 			matadorGUI.setDices(faceValues);
-			currentPlayer = playerList.nextPlayer(currentPlayer); //Gives next player turn			
+			matadorGUI.moveCar(diceCup.getSum(), playerList.getPlayer(currentPlayer));	//Moves car for the current player who has just thrown dice
+			currentPlayer = playerList.nextPlayer(currentPlayer); //Gives next player turn
+			
 		}
 	}
 }
-//while(true) {
-//	out.venterPaaSlag(pNr);
-//	keyb.waitForEnter();
-//	rafle.rollDice();
-//	out.visSlag(rafle.getTerninger());
-//	s = spillist.getSpiller(pNr);
