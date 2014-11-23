@@ -42,7 +42,6 @@ public class Player extends Account {
 			if (totalDiceSum == 0) {
 				totalDiceSum += 1;
 			}
-			System.out.println(totalDiceSum);
 		} else {
 		totalDiceSum += i;
 		}

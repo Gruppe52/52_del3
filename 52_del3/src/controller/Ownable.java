@@ -1,4 +1,6 @@
 package controller;
+import entity.Field;
+import entity.Player;
 
 /**
  * Ownable class
@@ -9,13 +11,19 @@ package controller;
 
 // abstrakte klasser skal forlænges, de kan ikke instantieres.
 
-public abstract class Ownable {
+public abstract class Ownable extends Field {
+	protected int price;
+	private Player owner;
 	
-	public abstract void  getRent();
-	  
-	Fleet fleet = new Fleet();				//Hvorfor bliver der lavet objekter herinde? -Stefan
-	LaborCamp LaborCamp = new LaborCamp();
-	Territory Territory = new Territory();
+	public Ownable(int fieldNumber, String fieldName, int price) {
+		super(fieldName, fieldNumber);
+		this.price = price;
+	}	
+	public abstract int getRent(); 
+	
+	public Player getOwner() {
+		return owner;
+	}
 	
 
 }

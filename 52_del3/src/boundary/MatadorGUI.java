@@ -6,9 +6,7 @@
 
 package boundary;
 
-import java.io.File;
 
-import entity.Dice;
 import entity.PlayerList;
 import entity.Player;
 import boundaryToMatador.GUI;
@@ -16,8 +14,6 @@ import boundaryToMatador.GUI;
 public class MatadorGUI {
 	
 	/** fields FILE */
-	final private File FIELDS_FILE = new File("./fields.txt");
-
 	public void gameStarter(){
 		GUI.showMessage(String.format(Texts.texts[0]));
 	}
