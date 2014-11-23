@@ -1,5 +1,6 @@
 package controller;
 
+import boundary.MatadorGUI;
 import entity.Field;
 import entity.Player;
 
@@ -13,6 +14,12 @@ public class Refuge extends Field {
 
 	@Override
 	public void landOnField(Player player) {
+		System.out.println("landed on Refuge");
+		
+	}
+
+	@Override
+	public void landOnField(Player player, MatadorGUI matadorGUI) {
 		// TODO Auto-generated method stub
 		
 	}

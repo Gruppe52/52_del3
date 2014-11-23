@@ -7,6 +7,7 @@
  */
 package controller;
 
+import boundary.MatadorGUI;
 import entity.Player;
 
 public class LaborCamp extends Ownable {
@@ -23,6 +24,12 @@ public class LaborCamp extends Ownable {
 
 	@Override
 	public void landOnField(Player player) {
+		System.out.println("landed on laborcamp");
+		
+	}
+
+	@Override
+	public void landOnField(Player player, MatadorGUI matadorGUI) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,6 +1,8 @@
 package controller;
 
+import boundary.MatadorGUI;
 import entity.Player;
+
 
 /**
  * Territory class
@@ -23,12 +25,18 @@ public class Territory extends Ownable {
 
 	@Override
 	public void landOnField(Player player) {
-		// TODO Auto-generated method stub
+		System.out.println("Det ejes af " + super.getOwner());
+		if(super.getOwner() == null) {
+			
+		}
 		
 	}
 	public String toString() {
 		return (fieldNumber + " " + fieldName + ", rent" + rent + ", price" + price);
 	}
+
+
+
 
 
 }

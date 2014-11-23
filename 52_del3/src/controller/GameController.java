@@ -2,8 +2,9 @@ package controller;
 
 import boundary.MatadorGUI;
 import entity.Board;
+import entity.Field;
 import entity.PlayerList;
-//import entity.Player;
+import entity.Player;
 import entity.DiceCup;
 /**
  * SpilController som uddelegerer opgaver
@@ -16,7 +17,9 @@ public class GameController {
 	MatadorGUI matadorGUI = new MatadorGUI();
 	DiceCup diceCup = new DiceCup();
 	Board board = new Board();
-	PlayerList playerList = new PlayerList(2);
+	PlayerList playerList = new PlayerList(2);	//The constructor should ideally not be receiving number of players, as we find the number later in init()
+
+	
 	/**
 	 * Initialiserer spillet
 	 */
@@ -39,10 +42,18 @@ public class GameController {
 		while(true) {
 			matadorGUI.awaitDiceThrow(currentPlayer, playerList.getPlayer(currentPlayer));	//Gives diceThrow to currentPlayer
 			diceCup.throwDice();	//Randomizes the dices
-			int[] faceValues = diceCup.getDice();
-			matadorGUI.setDices(faceValues);
+			matadorGUI.setDices(diceCup.getDice());
 			matadorGUI.moveCar(diceCup.getSum(), playerList.getPlayer(currentPlayer));	//Moves car for the current player who has just thrown dice
-			currentPlayer = playerList.nextPlayer(currentPlayer); //Gives next player turn
+			
+			//Field/Car/Player interactions
+				
+			board.getField(playerList.getPlayer(currentPlayer).getTotalDiceSum()).landOnField(playerList.getPlayer(currentPlayer), matadorGUI);	 //Refactor this!!!	
+			
+			//Update player money
+			matadorGUI.updateMoney(playerList.getPlayer(currentPlayer));
+			
+			//Gives next player turn
+			currentPlayer = playerList.nextPlayer(currentPlayer); 
 			
 		}
 	}

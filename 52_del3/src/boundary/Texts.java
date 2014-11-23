@@ -17,7 +17,9 @@ public class Texts {
 		"Hvor mange spillere?",
 		"Hvor mange spillere?",
 		"Skriv venligst navn på spiller ",
-		"Spiller ",
-		", tryk for at rulle terninger"
+		"Spiller ",							//[10]
+		", tryk for at rulle terninger",
+		"Dette område ejes ikke af nogen, vil du købe det?",
+		"Du har ikke penge nok på kontoen til at købe"
 		};
 }

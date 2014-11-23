@@ -1,4 +1,5 @@
 package controller;
+import boundary.MatadorGUI;
 import entity.Field;
 import entity.Player;
 
@@ -25,5 +26,26 @@ public abstract class Ownable extends Field {
 		return owner;
 	}
 	
-
+	public String toString() {
+		String x = "Feltnavn:" + fieldName + ", felt nr.:" + fieldNumber;
+		return x;
+	}
+	
+	
+	@Override
+	public void landOnField(Player player, MatadorGUI matadorGUI) {
+		if(getOwner() == null) {
+			boolean x = matadorGUI.askIfPlayerWantsToBuyTerritory();	//Gets yes/no answer if the players wants to buy
+			if(x) {
+				if(price <= player.getBalance()) {
+					player.withdraw(price);
+					owner = player;
+				} else if(price > player.getBalance()) {
+					matadorGUI.playerCantAfford();
+				}
+			}		
+		}
+	}
 }
+
+

@@ -31,6 +31,7 @@ public class Fleet extends Ownable {
 
 	@Override
 	public void landOnField(Player player) {
+		System.out.println(player.getName() + " has landed on fleet");
 	}	
 
 }

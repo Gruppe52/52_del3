@@ -13,13 +13,13 @@ public class PlayerList {
 			Players[i]=new Player();
 	} 
 	
-	public void addPlayer(int numberOfPlayers){			//Det virker ikke efter hensigten denne funktion!!
-		String[] PlayerNames = {"Peter ","Lene  ","Jan   ","Tobias","Jytte ","Lone  "};
-		for (int i=0; i < numberOfPlayers; i++){
-			Players[i].setName(PlayerNames[i]);
-			Players[i].setColor(i);
-		}	
-	}	
+//	public void addPlayer(int numberOfPlayers){			//Det virker ikke efter hensigten denne funktion!!
+//		String[] PlayerNames = {"Peter ","Lene  ","Jan   ","Tobias","Jytte ","Lone  "};
+//		for (int i=0; i < numberOfPlayers; i++){
+//			Players[i].setName(PlayerNames[i]);
+//			Players[i].setColor(i);
+//		}	
+//	}	
 
 	public Player[] getPlayers(){
 		return Players;

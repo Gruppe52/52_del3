@@ -1,5 +1,6 @@
 package controller;
 
+import boundary.MatadorGUI;
 import entity.Field;
 import entity.Player;
 
@@ -26,6 +27,11 @@ public class Tax extends Field  {
 	}
 	@Override
 	public void landOnField(Player player) {
-		// TODO Auto-generated method stub		
+		System.out.println("landed on tax");		
+	}
+	@Override
+	public void landOnField(Player player, MatadorGUI matadorGUI) {
+		// TODO Auto-generated method stub
+		
 	}
 }

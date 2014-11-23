@@ -16,5 +16,8 @@ public class Account {
 	public int getBalance() {
 		return penge;
 	}
+	public void withdraw(int amount) {
+		penge -= amount;
+	}
 
 }

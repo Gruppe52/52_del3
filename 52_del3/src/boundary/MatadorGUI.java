@@ -101,8 +101,26 @@ public class MatadorGUI {
 	public void moveCar(int diceSum, Player player) {
 		GUI.removeAllCars(player.getName()); 	//Removing cars from this specific player, or we are going to have multiple cars on the board
 		player.addTotalDiceSum(diceSum); //We are adding a total diceSum to each player, so they move in circles around the board
-		GUI.setCar(player.getTotalDiceSum(), player.getName());	//Sets the new car based on the throw
-		
+		GUI.setCar(player.getTotalDiceSum(), player.getName());	//Sets the new car based on the throw		
+	}
+	public boolean askIfPlayerWantsToBuyTerritory() {
+		boolean x = GUI.getUserLeftButtonPressed(Texts.texts[12], "Ja", "Nej");
+		return x;
+	}
+
+	public void playerCantAfford() {
+		GUI.showMessage(Texts.texts[13]);
 		
 	}
+
+	public void updateMoney(Player player) {
+		GUI.setBalance(player.getName(), player.getBalance());
+		
+	}
+	
+	
+	
+	
+	
+	
 }

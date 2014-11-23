@@ -70,7 +70,7 @@
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="13"/>  
   </message>  
-  <message id="14" operation="PlayerList(int)">    
+  <message id="14">    
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="15"/>  
   </message>  

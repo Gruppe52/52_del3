@@ -6,10 +6,10 @@
 package entity;
 
 public class Player extends Account {
-	String playerName;		//Spiller navn
-	boolean isDead = false; //Variable for if player has lost all money
-	int totalDiceSum;
-	int carField;
+	private String playerName;		//Spiller navn
+	private boolean isDead = false; //Variable for if player has lost all money
+	private int totalDiceSum;
+	private int carField;
 	/** 
 	 * @return Returnerer spillerens navn
 	 */
