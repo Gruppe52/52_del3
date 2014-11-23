@@ -96,9 +96,17 @@ public class MatadorGUI {
 		}
 			
 	}
-
+	/**
+	 * This function moves the car around the board
+	 * Uses players totalDiceSum attribute to keep track of movement
+	 * @param diceSum diceSum for the current throw for the current player
+	 * @param player player entity to move car, and set diceTotalSum so he moves in circles on board
+	 */
 	public void moveCar(int diceSum, Player player) {
-		GUI.removeAllCars(player.getName());	//Removing cars from this specific player
-		GUI.setCar(diceSum, player.getName());	
+		GUI.removeAllCars(player.getName()); 	//Removing cars from this specific player, or we are going to have multiple cars on the board
+		player.addTotalDiceSum(diceSum); //We are adding a total diceSum to each player, so they move in circles around the board
+		GUI.setCar(player.getTotalDiceSum(), player.getName());	//Sets the new car based on the throw
+		
+		
 	}
 }
