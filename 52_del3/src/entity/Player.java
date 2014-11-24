@@ -54,6 +54,16 @@ public class Player extends Account {
 	public int getCarField() {
 		return carField;
 	}
+
+	public void setDeath(boolean i) {
+		isDead = i;		
+	}
+
+	public boolean getDeath() {
+		return isDead;
+	}
+
+
 	
 }
 

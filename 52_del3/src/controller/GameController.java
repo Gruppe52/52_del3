@@ -39,21 +39,50 @@ public class GameController {
 	 * @param currentPlayer an integer that goes from 0 to playerList.getPlayers.length - used for giving each players turn.
 	 */
 	private void gameLoop(int currentPlayer, PlayerList playerList) {
-		while(true) {
-			matadorGUI.awaitDiceThrow(currentPlayer, playerList.getPlayer(currentPlayer));	//Gives diceThrow to currentPlayer
-			diceCup.throwDice();	//Randomizes the dices
+		Player currentTurnPlayer = new Player();
+		while(true) {					
+			currentTurnPlayer = playerList.getPlayer(currentPlayer);
+			
+			//Check if player is dead, if they are dead they won't get a turn!
+			if(currentTurnPlayer.getDeath()) {
+				//Gives next player turn
+				for (int i = 0; i < playerList.getPlayers().length; i++) {
+					currentPlayer = playerList.nextPlayer(currentPlayer);
+					currentTurnPlayer = playerList.getPlayer(currentPlayer);
+				}				
+			}			
+			//Gives diceThrow to currentPlayer
+			matadorGUI.awaitDiceThrow(currentPlayer, currentTurnPlayer);	
+			//Randomizes the dices
+			diceCup.throwDice();	
+			//Sets the dices on the GUI
 			matadorGUI.setDices(diceCup.getDice());
-			matadorGUI.moveCar(diceCup.getSum(), playerList.getPlayer(currentPlayer));	//Moves car for the current player who has just thrown dice
+			//Placeholder variable for easier reading
+			int diceSum = diceCup.getSum();
 			
-			//Field/Car/Player interactions
-				
-			board.getField(playerList.getPlayer(currentPlayer).getTotalDiceSum()).landOnField(playerList.getPlayer(currentPlayer), matadorGUI);	 //Refactor this!!!	
+			//Moves car for the current player who has just thrown dice
+			matadorGUI.moveCar(diceSum, currentTurnPlayer);	
 			
-			//Update player money
-			matadorGUI.updateMoney(playerList.getPlayer(currentPlayer));
+			//Placeholder variable for the current field the player is parked on 
+			int playerField = currentTurnPlayer.getTotalDiceSum();
+			//Going to Field controllers and action happens based on what field the player lands on
+			board.getField(playerField).landOnField(currentTurnPlayer, matadorGUI);	 	
+			
+			//Update player money on GUI
+			for (int i = 0; i < playerList.getPlayers().length; i++) {
+				matadorGUI.updateMoney(playerList.getPlayer(i));
+			}
+			
+			//Checking if player has gone under 0 in account, if they have they are dead
+			if (currentTurnPlayer.getBalance() <= 0) {
+				currentTurnPlayer.setDeath(true);
+				matadorGUI.playerDied(currentTurnPlayer);
+			}
 			
 			//Gives next player turn
 			currentPlayer = playerList.nextPlayer(currentPlayer); 
+			
+			
 			
 		}
 	}

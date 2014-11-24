@@ -19,5 +19,10 @@ public class Account {
 	public void withdraw(int amount) {
 		penge -= amount;
 	}
+	
+	public void deposit(int rent) {
+		penge = penge + rent;
+		
+	}
 
 }

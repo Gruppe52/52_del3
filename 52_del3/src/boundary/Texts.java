@@ -20,6 +20,10 @@ public class Texts {
 		"Spiller ",							//[10]
 		", tryk for at rulle terninger",
 		"Dette område ejes ikke af nogen, vil du købe det?",
-		"Du har ikke penge nok på kontoen til at købe"
+		"Du har ikke penge nok på kontoen til at købe",
+		"Du landede på et tax field og skal betale ",
+		" har landet på ",
+		" ejendom, og skal betale ",
+		" har fået under eller 0 på kontoen, og er ude af spillet!"
 		};
 }

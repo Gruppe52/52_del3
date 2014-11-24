@@ -44,6 +44,10 @@ public abstract class Ownable extends Field {
 					matadorGUI.playerCantAfford();
 				}
 			}		
+		} else if(player != getOwner() && getOwner() != null) {		//If the player landing on the field is not the owner of the field, and it's not null
+			matadorGUI.playerPaysRent(player, getOwner(), getRent());	//They need to pay the rent
+			player.withdraw(getRent());
+			getOwner().deposit(getRent());
 		}
 	}
 }

@@ -31,7 +31,7 @@ public class Tax extends Field  {
 	}
 	@Override
 	public void landOnField(Player player, MatadorGUI matadorGUI) {
-		// TODO Auto-generated method stub
-		
+		matadorGUI.landedOnTaxField(player, taxAmount);
+		player.withdraw(taxAmount);
 	}
 }

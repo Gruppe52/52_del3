@@ -117,6 +117,21 @@ public class MatadorGUI {
 		GUI.setBalance(player.getName(), player.getBalance());
 		
 	}
+
+	public void landedOnTaxField(Player player, int taxAmount) {
+		GUI.showMessage(Texts.texts[14] + taxAmount);
+		
+	}
+
+	public void playerPaysRent(Player player, Player owner, int rent) {
+		GUI.showMessage(player.getName() + Texts.texts[15] + owner.getName() + Texts.texts[16] + rent );
+		
+	}
+
+	public void playerDied(Player currentTurnPlayer) {
+		GUI.showMessage(currentTurnPlayer.getName() + Texts.texts[16]);
+		
+	}
 	
 	
 	

@@ -26,8 +26,7 @@ public class Territory extends Ownable {
 	@Override
 	public void landOnField(Player player) {
 		System.out.println("Det ejes af " + super.getOwner());
-		if(super.getOwner() == null) {
-			
+		if(super.getOwner() == null) {			
 		}
 		
 	}
