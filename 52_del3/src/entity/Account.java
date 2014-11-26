@@ -33,5 +33,11 @@ public class Account {
 		money = money - amount;
 		receiver.deposit(amount);
 	}
+	
+	public String toString() {
+		String info;
+		info = "money: " + money;
+		return info;
+	}
 
 }

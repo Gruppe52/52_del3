@@ -132,6 +132,11 @@ public class MatadorGUI {
 		GUI.showMessage(currentTurnPlayer.getName() + Texts.texts[16]);
 		
 	}
+
+	public void playerWon(Player winningPlayer) {
+		GUI.showMessage(winningPlayer.getName() + Texts.texts[17]);
+		
+	}
 	
 	
 	

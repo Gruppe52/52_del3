@@ -40,6 +40,7 @@ public class GameController {
 	 */
 	private void gameLoop(int currentPlayer, PlayerList playerList) {
 		Player currentTurnPlayer = new Player();
+		Player winningPlayer = new Player();
 		while(true) {					
 			currentTurnPlayer = playerList.getPlayer(currentPlayer);
 			
@@ -74,14 +75,56 @@ public class GameController {
 			}			
 			
 			//Checking if player has gone under 0 in account, if they have they are dead
-			if (currentTurnPlayer.getBalance() <= 0) {
-				currentTurnPlayer.setDeath(true);
+			if(checkIfPlayerIsDead(currentTurnPlayer)) {
 				matadorGUI.playerDied(currentTurnPlayer);
-				
-			}		
+			}
+			
+			//Checks if a player has won, by all other players dieing ie. having 0 or below in money
+			if(checkIfPlayerHasWon(playerList)) {
+				winningPlayer = findWinningPlayer(playerList);
+				matadorGUI.playerWon(winningPlayer);
+			}
 			
 			//Gives next player turn
 			currentPlayer = playerList.nextPlayer(currentPlayer);			
 		}
+	}	
+	
+	//Checks if a player is dead according to game rules
+	public boolean checkIfPlayerIsDead(Player player) {
+		boolean x = false;
+		if(player.getBalance() <= 0) {
+			player.setDeath(true);
+			x = true;
+		}  return x;
+	}
+	
+	//Returns player that has won!
+	public Player findWinningPlayer(PlayerList playerlist) {
+		Player winningPlayer = new Player();
+		//We have already established that someone has won, but who we will find out now:
+		for (int i = 0; i < playerList.getPlayers().length; i++) {
+			if(playerList.getPlayer(i).getHasWon()) {
+				winningPlayer = playerList.getPlayer(i);
+			}
+		}
+		return winningPlayer;
+	}
+	
+	//Check if someone among the playerList has won
+	public boolean checkIfPlayerHasWon(PlayerList playerList2) {
+		int x = 0;
+		boolean hasSomeoneWon = false;
+		//Collects number of dead players
+		for (int i = 0; i < playerList2.getPlayers().length; i++) {
+			if(playerList2.getPlayer(i).getDeath()) {
+				x++;
+			}
+		//If there is only one player alive, he has won
+		if(1 == (playerList2.getPlayers().length - x)) {
+			hasSomeoneWon = true;
+		}
+	}
+		return hasSomeoneWon;
 	}
 }

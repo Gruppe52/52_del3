@@ -29,8 +29,7 @@ public abstract class Ownable extends Field {
 	public String toString() {
 		String x = "Feltnavn:" + fieldName + ", felt nr.:" + fieldNumber;
 		return x;
-	}
-	
+	}	
 	
 	@Override
 	public void landOnField(Player player, MatadorGUI matadorGUI) {

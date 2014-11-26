@@ -10,6 +10,7 @@ public class Player extends Account {
 	private boolean isDead = false; //Variable for if player has lost all money
 	private int totalDiceSum;
 	private int carField;
+	private boolean hasWon = false;
 	/** 
 	 * @return Returnerer spillerens navn
 	 */
@@ -20,6 +21,14 @@ public class Player extends Account {
 	public boolean isWinner() {
 
 		return false;
+	}
+	
+	public void setHasWon(boolean condition) {
+		hasWon = condition;
+	}
+	
+	public boolean getHasWon() {
+		return hasWon;
 	}
 
 	public void setName(String name) {
@@ -62,6 +71,21 @@ public class Player extends Account {
 	public boolean getDeath() {
 		return isDead;
 	}
+	
+	public String toString() {
+		String name;
+		String death;
+		String totalDiceSumStr;
+		String carFieldStr;
+		String info;
+		name = "Name :" + playerName + " ";
+		death = "Dead: " + isDead + " ";
+		totalDiceSumStr = "DiceSum :" + totalDiceSum + " ";
+		carFieldStr = "Car field: " + carField + " ";
+		info = name + death + totalDiceSumStr + carFieldStr;
+		return info + super.toString();
+	}
+
 
 
 	
