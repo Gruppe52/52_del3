@@ -1,6 +1,6 @@
 package controller;
 
-import boundary.MatadorGUI;
+
 import entity.Player;
 
 

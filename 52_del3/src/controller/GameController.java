@@ -71,19 +71,17 @@ public class GameController {
 			//Update player money on GUI
 			for (int i = 0; i < playerList.getPlayers().length; i++) {
 				matadorGUI.updateMoney(playerList.getPlayer(i));
-			}
+			}			
 			
 			//Checking if player has gone under 0 in account, if they have they are dead
 			if (currentTurnPlayer.getBalance() <= 0) {
 				currentTurnPlayer.setDeath(true);
 				matadorGUI.playerDied(currentTurnPlayer);
-			}
+				
+			}		
 			
 			//Gives next player turn
-			currentPlayer = playerList.nextPlayer(currentPlayer); 
-			
-			
-			
+			currentPlayer = playerList.nextPlayer(currentPlayer);			
 		}
 	}
 }

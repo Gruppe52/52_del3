@@ -1,28 +1,37 @@
 
 package entity;
 /**
- * Account klassen indeholder pengebeholdning, bliver brugt inde i Player klassen
+ * Account klassen indeholder beholdning, bliver brugt inde i Player klassen
  * @author 52
  *
  */
 
 public class Account {
-	int penge = 30000;
+	int money = 30000;
 	
 	/**
 	 * getBalance
-	 * @return en pengebalance
+	 * @return en moneybalance
 	 */
 	public int getBalance() {
-		return penge;
+		return money;
 	}
 	public void withdraw(int amount) {
-		penge -= amount;
+		money -= amount;
 	}
 	
-	public void deposit(int rent) {
-		penge = penge + rent;
+	public void deposit(int amount) {
+		money = money + amount;
 		
+	}
+	
+	public void setBalance(int amount) {
+		money = amount;
+	}
+	
+	public void transfer(int amount, Player receiver) {
+		money = money - amount;
+		receiver.deposit(amount);
 	}
 
 }
