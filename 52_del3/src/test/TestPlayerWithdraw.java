@@ -9,7 +9,7 @@ import org.junit.Test;
 public class TestPlayerWithdraw {
 	
 	
-	Player player = new Player();
+	private Player player = new Player();
 	
 	
 	@Test

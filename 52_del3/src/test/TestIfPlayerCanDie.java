@@ -8,8 +8,8 @@ import org.junit.Test;
 
 public class TestIfPlayerCanDie {
 
-	Player player = new Player();
-	GameController gameController = new GameController();
+	private Player player = new Player();
+	private GameController gameController = new GameController();
 	
 	@Test
 	public void test() {

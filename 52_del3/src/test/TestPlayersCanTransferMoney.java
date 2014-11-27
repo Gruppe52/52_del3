@@ -6,10 +6,10 @@ import org.junit.Test;
 import entity.Player;
 
 public class TestPlayersCanTransferMoney {
-	Player playerA = new Player();
-	Player playerB = new Player();
-	int transferAmount = 5000;
-	int initialAmount = 10000;
+	private Player playerA = new Player();
+	private Player playerB = new Player();
+	private int transferAmount = 5000;
+	private int initialAmount = 10000;
 	
 	@Test
 	public void test() {

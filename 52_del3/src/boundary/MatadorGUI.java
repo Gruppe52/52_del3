@@ -135,7 +135,6 @@ public class MatadorGUI {
 
 	public void playerWon(Player winningPlayer) {
 		GUI.showMessage(winningPlayer.getName() + Texts.texts[17]);
-		
 	}
 	
 	

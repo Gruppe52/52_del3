@@ -10,18 +10,19 @@ import controller.GameController;
 
 public class TestIfPlayerCanWin {
 
-	GameController gameController = new GameController();
-	PlayerList playerList = new PlayerList(2);
-	int winningBorderAmount = 1;
-	int losingAmount = 0;
-	int indexOfWinningPlayer = 0;
+	private GameController gameController = new GameController();
+	private int numberOfPlayers = 3;
+	private PlayerList playerList = new PlayerList(numberOfPlayers);
+	private int winningBorderAmount = 1;
+	private int losingAmount = 0;
+	private int indexOfWinningPlayer = 0;
 	
 	@Test
 	public void test() {
 		/**Preconditions**/
 		
 		//Is two players created ?
-		assertEquals(playerList.getPlayers().length,2);
+		assertEquals(playerList.getPlayers().length,numberOfPlayers);
 		
 		//Puts all players balance at zero, except for one player
 		for (int i = 0; i < playerList.getPlayers().length; i++) {
@@ -52,5 +53,17 @@ public class TestIfPlayerCanWin {
 		/***Test***/		
 		//Postcondition
 		assertEquals(gameController.checkIfPlayerHasWon(playerList),true);		
+	}
+	
+	public PlayerList getPlayerList() {
+		return playerList;
+	}
+	
+	public int getIndexOfWinningPlayer() {
+		return indexOfWinningPlayer;
+	}
+@Deprecated
+	public int getNumberOfPlayers() {
+		return numberOfPlayers;
 	}
 }

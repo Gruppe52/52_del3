@@ -18,6 +18,7 @@ public class GameController {
 	DiceCup diceCup = new DiceCup();
 	Board board = new Board();
 	PlayerList playerList = new PlayerList(2);	//The constructor should ideally not be receiving number of players, as we find the number later in init()
+	private boolean gameEnded = false;
 
 	
 	/**
@@ -38,20 +39,20 @@ public class GameController {
 	 * The gameLoop, where players turn by turn throws dices, aqquire and lose wealth, till one person has won
 	 * @param currentPlayer an integer that goes from 0 to playerList.getPlayers.length - used for giving each players turn.
 	 */
-	private void gameLoop(int currentPlayer, PlayerList playerList) {
+	public void gameLoop(int currentPlayer, PlayerList playerList) {
 		Player currentTurnPlayer = new Player();
 		Player winningPlayer = new Player();
-		while(true) {					
+		
+		while(!checkIfPlayerHasWon(playerList)) {					
 			currentTurnPlayer = playerList.getPlayer(currentPlayer);
 			
-			//Check if player is dead, if they are dead they won't get a turn!
-			if(currentTurnPlayer.getDeath()) {
-				//Gives next player turn
-				for (int i = 0; i < playerList.getPlayers().length; i++) {
-					currentPlayer = playerList.nextPlayer(currentPlayer);
-					currentTurnPlayer = playerList.getPlayer(currentPlayer);
-				}				
-			}			
+			checkIfPlayerIsDead(currentTurnPlayer);
+			
+			//Check if player can have turn, if they are dead they won't get a turn!
+			if(checkIfPlayerCanHaveTurn(currentTurnPlayer)) {
+				currentPlayer = playerList.nextPlayer(currentPlayer);
+				currentTurnPlayer = playerList.getPlayer(currentPlayer);
+			}
 			//Gives diceThrow to currentPlayer
 			matadorGUI.awaitDiceThrow(currentPlayer, currentTurnPlayer);	
 			//Randomizes the dices
@@ -72,23 +73,26 @@ public class GameController {
 			//Update player money on GUI
 			for (int i = 0; i < playerList.getPlayers().length; i++) {
 				matadorGUI.updateMoney(playerList.getPlayer(i));
-			}			
+			}		
 			
 			//Checking if player has gone under 0 in account, if they have they are dead
 			if(checkIfPlayerIsDead(currentTurnPlayer)) {
 				matadorGUI.playerDied(currentTurnPlayer);
 			}
 			
-			//Checks if a player has won, by all other players dieing ie. having 0 or below in money
-			if(checkIfPlayerHasWon(playerList)) {
-				winningPlayer = findWinningPlayer(playerList);
-				matadorGUI.playerWon(winningPlayer);
-			}
-			
 			//Gives next player turn
 			currentPlayer = playerList.nextPlayer(currentPlayer);			
 		}
-	}	
+		gameEnded = true;
+		if(gameEnded) {
+			winningPlayer = findWinningPlayer(playerList);
+			matadorGUI.playerWon(winningPlayer);
+		}
+	}
+	
+	public boolean getGameEnded() {
+		return gameEnded;
+	}
 	
 	//Checks if a player is dead according to game rules
 	public boolean checkIfPlayerIsDead(Player player) {
@@ -126,5 +130,19 @@ public class GameController {
 		}
 	}
 		return hasSomeoneWon;
+	}
+	
+	public void resetOwner(Player player) {
+		
+	}
+	
+	public boolean checkIfPlayerCanHaveTurn(Player player) {
+		boolean x = false;
+		if(player.getDeath()) {
+			x = false;
+		} else if(!player.getDeath()) {
+			x = true;
+		}
+		return x;
 	}
 }
