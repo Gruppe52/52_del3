@@ -11,6 +11,7 @@ public class Player extends Account {
 	private int totalDiceSum;
 	private int carField;
 	private boolean hasWon = false;
+	
 	/** 
 	 * @return Returnerer spillerens navn
 	 */

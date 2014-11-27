@@ -5,6 +5,7 @@
 package entity;
 import controller.Fleet;
 import controller.LaborCamp;
+import controller.Ownable;
 import controller.Refuge;
 import controller.Tax;
 import controller.Territory;
@@ -18,6 +19,7 @@ public class Board {
 		Field Field = fields[FieldNr];
 		return Field;
 	}
+	
 	public Board() {
 		    fields[1] = new Territory(1, "Start", 100, 1000);
 			fields[2] = new Territory(2, "Tribe Encampment", 100, 1000);
@@ -44,6 +46,14 @@ public class Board {
 	}
 	public Field[] getFields() {
 		return fields;
+	}
+	public void resetOwnerShip(Player player) {
+		for (int i = 0; i < fields.length; i++) {
+			if( fields[i] instanceof Ownable ) {
+				fields[i].resetOwner(player);				
+			}
+		}
+		
 	}
 
 }

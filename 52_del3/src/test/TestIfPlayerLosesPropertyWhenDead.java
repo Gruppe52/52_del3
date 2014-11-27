@@ -7,6 +7,7 @@ import org.junit.Test;
 import boundary.MatadorGUI;
 import controller.GameController;
 import controller.Territory;
+import entity.Board;
 import entity.Player;
 import entity.PlayerList;
 
@@ -19,6 +20,8 @@ public class TestIfPlayerLosesPropertyWhenDead {
 	private GameController gameController = new GameController();
 	private MatadorGUI matadorGUI = new MatadorGUI();
 	private Player player;
+	private Board board = new Board();
+
 	
 	
 	@Test
@@ -47,7 +50,7 @@ public class TestIfPlayerLosesPropertyWhenDead {
 				
 		assertEquals(player.getDeath(),true);
 
-
+		board.resetOwnerShip(player);
 		
 		//Postconditions
 		
