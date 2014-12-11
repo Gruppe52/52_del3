@@ -1,0 +1,177 @@
+	type::Start;;
+	backgroundColor::255,,0,,0;;
+	foregroundColor::0,,0,,0;;
+	title::START;; 
+	subText:: ;; 
+	description:: ;;
+||		
+	type::Street;;
+	backgroundColor::75,,155,,225;;
+	foregroundColor::0,,0,,0;;
+	title::Tribe Encampment ;; 
+	subText::	;; 
+	description:: ;;
+	leje::100;;	
+	
+||	
+	type::Street;;
+	backgroundColor::75,,155,,225;;
+	foregroundColor::0,,0,,0;;
+	title::Crater ;; 
+	subText::	;; 
+	description:: ;;
+	leje::300;;	
+	
+||	
+	type::Street;;
+	backgroundColor::75,,155,,225;;
+	foregroundColor::0,,0,,0;;
+	title::Mountain;; 
+	subText::Balance:	+250;; 
+	description::You have climbed up the tower and found a large chest filled with 250 gold coins!;;
+	leje::500;;
+||	
+	type::Street;;
+	backgroundColor::75,,155,,225;;
+	foregroundColor::0,,0,,0;;
+	title::Cold Desert;; 
+	subText::Balance:	-200;; 
+	description::You have fallen down a crater and dropped 200 gold coins!;;
+	leje::700;;
+||	
+	type::Street;;
+	backgroundColor::75,,155,,225;;
+	foregroundColor::0,,0,,0;;
+	title::Black cave;; 
+	subText::Balance:	-100;; 
+	description::You have reached the palace gates, you have to pay 100 gold coins!;;
+	leje::1000;;
+||	
+	type::Street;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::The werewall;; 
+	subText::Balance:	-20;; 
+	description::You reached the cold desert and paid 20 gold coins for a jacket!;;
+	leje::1300;;
+||	
+	type::Street;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::Mountain village;; 
+	subText::Balance:	+180;; 
+	description::You have reached the walled city and recieved 180 gold coins for your courage!;;
+	leje::1600;;
+||	
+	type::Street;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::South Citadel;; 
+	subText::Balance:	0;; 
+	description::You reached the monastery and found inner peace!;;
+	leje::2000;;
+||	
+	type::Street;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::Palace gates;; 
+	subText::Balance:	-70;; 
+	description::You spent a night in the black cave and woke up missing 70 gold coins!;;
+	leje::2600;;
+||	
+	type::Street;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::Tower;; 
+	subText::Balance:	-60;; 
+	description::You have been kidnapped by Jabba The Hut! You must pay 60 gold coins to be released from the mountains.;;
+	leje::3200;;
+||	
+	type::Street;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::Castle;; 
+	subText::Balance:	-80;; 
+	description::You have reached the werewolf wall, you paid 80 gold coins for a safe passage and an extra turn!;;
+	leje::4000;;
+||	
+	type::Street;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::Walled city;; 
+	subText::Receive 5000;; 
+	description::You were taken captive by an old wizard! Give him 90 gold coins or he will swing his stick in the pit!;;
+	leje:: ;;
+||	
+	type::REFUGE;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::Monastery;; 
+	subText::Receive 500;; 
+	description::You accidently fell down a mine shaft which turned out to be a gold mine! You mined gold for 650 gold coins.;;
+	leje:: ;;
+||	
+	type::REFUGE;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::Huts in the mountain;; 
+	subText::Balance:	+650;; 
+	description::You accidently fell down a mine shaft which turned out to be a gold mine! You mined gold for 650 gold coins.;;
+	leje:: ;;
+||	
+	type::Street;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::The pit;; 
+	subText::Pay 100 x dice;; 
+	description::You accidently fell down a mine shaft which turned out to be a gold mine! You mined gold for 650 gold coins.;;
+	leje:: ;;
+||	
+	type::TAX;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::Goldmine;; 
+	subText::Balance:	+650;; 
+	description:: ;;
+	leje:: ;;
+||	
+	type::TAX;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::Caravan;; 
+	subText::Balance:	+650;; 
+	description:: ;;
+	leje:: ;;
+||	
+	type::Street;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::Second Sail;; 
+	subText::Balance:	+650;; 
+	description::You accidently fell down a mine shaft which turned out to be a gold mine! You mined gold for 650 gold coins.;;
+	leje:: ;;
+||	
+	type::Street;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::Sea Grover;; 
+	subText::Balance:	+650;; 
+	description::You accidently fell down a mine shaft which turned out to be a gold mine! You mined gold for 650 gold coins.;;
+	leje:: ;;
+||	
+	type::Street;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::The Buccaneers;; 
+	subText::Balance:	+650;; 
+	description::You accidently fell down a mine shaft which turned out to be a gold mine! You mined gold for 650 gold coins.;;
+	leje:: ;;
+||	
+	type::Street;;
+	backgroundColor::255,,135,,120;;
+	foregroundColor::0,,0,,0;;
+	title::Privateer armade;; 
+	subText::Balance:	+650;; 
+	description::You accidently fell down a mine shaft which turned out to be a gold mine! You mined gold for 650 gold coins.;;
+	leje:: ;;
+	
