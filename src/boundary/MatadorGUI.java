@@ -114,9 +114,7 @@ public class MatadorGUI {
 	public void updateMoney(PlayerList playerList) {
 		for (int i = 0; i < playerList.getPlayers().length; i++) {
 			GUI.setBalance(playerList.getPlayer(i).getName(), playerList.getPlayer(i).getBalance());
-		}
-		
-		
+		}		
 	}
 
 	public void landedOnTaxField(Player player, int taxAmount) {
@@ -129,18 +127,13 @@ public class MatadorGUI {
 		
 	}
 
-	public void playerDied(Player currentTurnPlayer) {
-		GUI.showMessage(currentTurnPlayer.getName() + Texts.texts[16]);
+	public void playerDied(Player deadPlayer) {
+		GUI.showMessage(deadPlayer.getName() + Texts.texts[17]);
 		
 	}
 
 	public void playerWon(Player winningPlayer) {
-		GUI.showMessage(winningPlayer.getName() + Texts.texts[17]);
+		GUI.showMessage(winningPlayer.getName() + Texts.texts[18]);
 	}
-	
-	
-	
-	
-	
 	
 }

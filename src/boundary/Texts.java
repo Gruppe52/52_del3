@@ -24,7 +24,7 @@ public class Texts {
 		"Du landede på et tax field og skal betale ",
 		" har landet på ",
 		" ejendom, og skal betale ",
-		" har fået under eller 0 på kontoen, og er ude af spillet!",
-		"har vundet spillet, tillykke!"
+		" har fået under eller 0 på kontoen, og er ude af spillet!", //[17]
+		" har vundet spillet, tillykke!" 	//[18]
 		};
 }

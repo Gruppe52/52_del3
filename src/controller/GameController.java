@@ -46,14 +46,18 @@ public class GameController {
 		while(!checkIfPlayerHasWon(playerList)) {
 			for (int i = 0; i < playerList.getPlayers().length; i++) {
 				if(!playerList.getPlayer(i).getDeath()) {
+					
 					currentPlayer = playerList.getPlayer(i);
 					
 					//Gives diceThrow to currentPlayer
 					matadorGUI.awaitDiceThrow(currentPlayer);
+					
 					//Randomizes the dices
 					diceCup.throwDice();	
+					
 					//Sets the dices on the GUI
-					matadorGUI.setDices(diceCup.getDice());					
+					matadorGUI.setDices(diceCup.getDice());		
+					
 					//Placeholder variable for easier reading
 					int diceSum = diceCup.getSum();			
 					
@@ -70,8 +74,7 @@ public class GameController {
 					matadorGUI.updateMoney(playerList);
 					
 					//Check if a player has died
-					checkIfPlayerIsDead(playerList);					
-					
+					checkIfPlayerIsDead(playerList, matadorGUI);					
 					
 				}
 			}		
@@ -79,7 +82,8 @@ public class GameController {
 //		gameEnded = true;
 //		if(gameEnded) {
 		winningPlayer = findWinningPlayer(playerList);
-		matadorGUI.playerWon(winningPlayer);		
+		matadorGUI.playerWon(winningPlayer);	
+		System.out.println(winningPlayer.getName());
 	}
 	
 	public boolean getGameEnded() {
@@ -87,10 +91,11 @@ public class GameController {
 	}
 	
 	//Checks if a player is dead according to game rules
-	public void checkIfPlayerIsDead(PlayerList playerList) {		
+	public void checkIfPlayerIsDead(PlayerList playerList, MatadorGUI matadorGUI) {		
 	for (int i = 0; i < playerList.getPlayers().length; i++) {
 		if(playerList.getPlayer(i).getBalance() <= 0) {
 			playerList.getPlayer(i).setDeath(true);
+			matadorGUI.playerDied(playerList.getPlayer(i));
 			}
 		}
 	}
@@ -104,7 +109,7 @@ public class GameController {
 		Player winningPlayer = new Player();
 		//We have already established that someone has won, meaning only one player is alive
 		for (int i = 0; i < playerList.getPlayers().length; i++) {
-			if(playerList.getPlayer(i).getHasWon()) {
+			if(playerList.getPlayer(i).getDeath() == false) {
 				winningPlayer = playerList.getPlayer(i);
 			}
 		}
