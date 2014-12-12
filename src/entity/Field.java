@@ -27,13 +27,6 @@ public abstract class Field {
 		// TODO Auto-generated method stub
 		
 	}
-
-
-//	public void getRent() {
-//		// TODO Auto-generated method stub
-//		
-//	}
-	
 	
 
 }

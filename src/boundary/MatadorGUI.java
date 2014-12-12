@@ -111,8 +111,11 @@ public class MatadorGUI {
 		
 	}
 
-	public void updateMoney(Player player) {
-		GUI.setBalance(player.getName(), player.getBalance());
+	public void updateMoney(PlayerList playerList) {
+		for (int i = 0; i < playerList.getPlayers().length; i++) {
+			GUI.setBalance(playerList.getPlayer(i).getName(), playerList.getPlayer(i).getBalance());
+		}
+		
 		
 	}
 

@@ -23,13 +23,17 @@ public abstract class Ownable extends Field {
 		this.price = price;
 	}	
 	
+	public int getPrice() {
+		return price;
+	}
+	
 	
 	public Player getOwner() {
 		return owner;
 	}
 	
 	public String toString() {
-		String x = "Feltnavn:" + fieldName + ", felt nr.:" + fieldNumber;
+		String x = "Feltnavn: " + fieldName + ", felt nr.:" + fieldNumber + " " + this.getClass();
 		return x;
 	}
 	

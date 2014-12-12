@@ -25,19 +25,19 @@ public class GameController {
 	 * Initialiserer spillet
 	 */
 	public void init() {
+		
 		matadorGUI.createBoard();
 		numberOfPlayers = matadorGUI.getNumberOfPlayers();	//Gets input from user, for number of players
 		PlayerList playerList = new PlayerList(numberOfPlayers);
 		matadorGUI.askForPlayerNames(playerList);
 		matadorGUI.addPlayers(numberOfPlayers, playerList);
 		matadorGUI.setCars(playerList);
-		int currentPlayer = 0;	//Used for giving turns to players in gameLoop
 		gameLoop(playerList);								//Goes to the gameLoop, where players throw dice and take turns etc. till game ends
-//		Player s;		//Tjek CDIO1 eksempel for/om hvordan denne skal bruges senere...
+		
 	}
 	/**
 	 * The gameLoop, where players turn by turn throws dices, aqquire and lose wealth, till one person has won
-	 * @param currentPlayer an integer that goes from 0 to playerList.getPlayers.length - used for giving each players turn.
+	 * @param PlayerList playerList is an array type object containing a list of player objects
 	 */
 	public void gameLoop(PlayerList playerList) {
 		Player currentPlayer = new Player();
@@ -53,67 +53,33 @@ public class GameController {
 					//Randomizes the dices
 					diceCup.throwDice();	
 					//Sets the dices on the GUI
-					matadorGUI.setDices(diceCup.getDice());
-					
+					matadorGUI.setDices(diceCup.getDice());					
 					//Placeholder variable for easier reading
-					int diceSum = diceCup.getSum();
+					int diceSum = diceCup.getSum();			
 					
-					currentPlayer.addCarField(diceSum);
+					//Sets the players carField variable, used for getting the car around on board
+					currentPlayer.addCarField(diceSum);					
 					
 					//Moves car for the current player who has just thrown dice
 					matadorGUI.moveCar(currentPlayer);	
 					
-					//Placeholder variable for the current field the player is parked on 
-//					int playerField = currentPlayer.getTotalDiceSum();
-					//Going to Field controllers and action happens based on what field the player lands on
-//					board.getField(playerField).landOnField(currentPlayer, matadorGUI);	 
+					//LandOnField method handles if player can buy property, pays taxes etc, for specific field he lands on
+					board.getField(currentPlayer.getCarField()).landOnField(currentPlayer, matadorGUI);
+					
+					//Update players money after LandOnField method has been called (usually LandOnField messes with accounts money)					
+					matadorGUI.updateMoney(playerList);
+					
+					//Check if a player has died
+					checkIfPlayerIsDead(playerList);					
+					
 					
 				}
-			}
-//			currentTurnPlayer = playerList.getPlayer(currentPlayer);
-			
-//			checkIfPlayerIsDead(currentTurnPlayer);
-			
-			//Check if player can have turn, if they are dead they won't get a turn!
-//			if(checkIfPlayerCanHaveTurn(currentTurnPlayer)) {
-//				currentPlayer = playerList.nextPlayer(currentPlayer);
-//				currentTurnPlayer = playerList.getPlayer(currentPlayer);
-//			}
-
-//			matadorGUI.awaitDiceThrow(currentPlayer, currentTurnPlayer);	
-//			//Randomizes the dices
-//			diceCup.throwDice();	
-//			//Sets the dices on the GUI
-//			matadorGUI.setDices(diceCup.getDice());
-//			//Placeholder variable for easier reading
-//			int diceSum = diceCup.getSum();
-//			
-//			//Moves car for the current player who has just thrown dice
-//			matadorGUI.moveCar(diceSum, currentTurnPlayer);	
-//			
-//			//Placeholder variable for the current field the player is parked on 
-//			int playerField = currentTurnPlayer.getTotalDiceSum();
-//			//Going to Field controllers and action happens based on what field the player lands on
-//			board.getField(playerField).landOnField(currentTurnPlayer, matadorGUI);	 	
-//			
-//			//Update player money on GUI
-//			for (int i = 0; i < playerList.getPlayers().length; i++) {
-//				matadorGUI.updateMoney(playerList.getPlayer(i));
-//			}		
-//			
-//			//Checking if player has gone under 0 in account, if they have they are dead
-//			if(checkIfPlayerIsDead(currentTurnPlayer)) {
-//				matadorGUI.playerDied(currentTurnPlayer);
-//			}
-			
-			//Gives next player turn
-//			currentPlayer = playerList.nextPlayer(currentPlayer);			
+			}		
 		}
-		gameEnded = true;
-		if(gameEnded) {
-			winningPlayer = findWinningPlayer(playerList);
-			matadorGUI.playerWon(winningPlayer);
-		}
+//		gameEnded = true;
+//		if(gameEnded) {
+		winningPlayer = findWinningPlayer(playerList);
+		matadorGUI.playerWon(winningPlayer);		
 	}
 	
 	public boolean getGameEnded() {
@@ -121,18 +87,22 @@ public class GameController {
 	}
 	
 	//Checks if a player is dead according to game rules
-	public boolean checkIfPlayerIsDead(Player player) {
-		boolean x = false;
-		if(player.getBalance() <= 0) {
-			player.setDeath(true);
-			x = true;
-		}  return x;
+	public void checkIfPlayerIsDead(PlayerList playerList) {		
+	for (int i = 0; i < playerList.getPlayers().length; i++) {
+		if(playerList.getPlayer(i).getBalance() <= 0) {
+			playerList.getPlayer(i).setDeath(true);
+			}
+		}
 	}
 	
-	//Returns player that has won!
+	/**
+	 * Finds the player object that has won in the playerList.
+	 * @param playerlist
+	 * @return winning player object
+	 */
 	public Player findWinningPlayer(PlayerList playerlist) {
 		Player winningPlayer = new Player();
-		//We have already established that someone has won, but who we will find out now:
+		//We have already established that someone has won, meaning only one player is alive
 		for (int i = 0; i < playerList.getPlayers().length; i++) {
 			if(playerList.getPlayer(i).getHasWon()) {
 				winningPlayer = playerList.getPlayer(i);
@@ -141,7 +111,11 @@ public class GameController {
 		return winningPlayer;
 	}
 	
-	//Check if someone among the playerList has won
+	/**
+	 * Check's if there is only one player left alive in the playerlist
+	 * @param playerList2
+	 * @return
+	 */
 	public boolean checkIfPlayerHasWon(PlayerList playerList2) {
 		int x = 0;
 		boolean hasSomeoneWon = false;
@@ -158,10 +132,12 @@ public class GameController {
 		return hasSomeoneWon;
 	}
 	
-	public void resetOwner(Player player) {
-		
+	
+	public void resetOwner(Player player) {		
 	}
 	
+	
+	@Deprecated
 	public boolean checkIfPlayerCanHaveTurn(Player player) {
 		boolean x = false;
 		if(player.getDeath()) {

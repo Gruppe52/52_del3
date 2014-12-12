@@ -44,6 +44,7 @@ public class Board {
 			fields[21] = new Fleet(21, "The Buccaneers", 4000);
 			fields[22] = new Fleet(22, "Privateer armade", 4000);
 	}
+	
 	public Field[] getFields() {
 		return fields;
 	}

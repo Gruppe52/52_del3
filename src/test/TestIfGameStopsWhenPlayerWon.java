@@ -24,7 +24,7 @@ public class TestIfGameStopsWhenPlayerWon {
 		//Test
 		
 		//Warning! Can get stuck at this loop, if the test fails!
-		gameController.gameLoop(0, playerList);	// 0 is just the index of starting player from playerList array
+		gameController.gameLoop(playerList);	// 0 is just the index of starting player from playerList array
 		
 		//Postcondtions		
 		assertEquals(gameController.getGameEnded(),true);
