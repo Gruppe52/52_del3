@@ -11,6 +11,7 @@ public class Player extends Account {
 	private int totalDiceSum;
 	private int carField;
 	private boolean hasWon = false;
+	private int fleetOwned;
 	
 	/** 
 	 * @return Returnerer spillerens navn
@@ -81,6 +82,14 @@ public class Player extends Account {
 		carFieldStr = "Car field: " + carField + " ";
 		info = name + death + totalDiceSumStr + carFieldStr;
 		return info + super.toString();
+	}
+
+	public void addFleet() {
+		fleetOwned = fleetOwned + 1;		
+	}
+	
+	public int getFleetOwned() {
+		return fleetOwned;
 	}
 
 

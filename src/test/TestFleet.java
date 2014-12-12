@@ -16,7 +16,8 @@ public class TestFleet {
 		//Test fleet class functionality!
 		
 		//Fleet classes are on field[19] to field[22]
-		Fleet field;
+		Fleet field1;
+		Fleet field2;
 		Board board = new Board();
 		PlayerList playerList = new PlayerList(2);
 		Player buyingPlayer;
@@ -27,30 +28,70 @@ public class TestFleet {
 		payingPlayer = playerList.getPlayer(1);		
 		
 		//Making the fleet object based on field 19, which is a fleet object in the board list
-		field = (Fleet) board.getField(19);
+		field1 = (Fleet) board.getField(19);
 	
 			
 		//Making sure player has enough money to buy a fleet field (price is 4000)
-		buyingPlayer.setBalance(field.getPrice());
+		buyingPlayer.setBalance(field1.getPrice());
 		
 		//Player buys field
-		field.buyField(buyingPlayer);
+		field1.buyField(buyingPlayer);
 		
 		//Make sure the player is owner now		
-		assertEquals(field.getOwner(),buyingPlayer);
+		assertEquals(field1.getOwner(),buyingPlayer);
 		
 		//Make sure that amount is 500
-		assertEquals(field.getRent(),500);
+		assertEquals(field1.getRent(),500);
 		
 		//Setting amount for payingPlayer
-		payingPlayer.setBalance(field.getRent());
+		payingPlayer.setBalance(field1.getRent());
 		
 		//payingPlayer is supposed to pay 500, since buyingPlayer owns 1 fleet field
-		field.landOnField(payingPlayer);
+		field1.landOnField(payingPlayer);
 		
 		//assert that payingPlayer now has 0 on account, since we started with the player only having the rent amount on account
 		assertEquals(payingPlayer.getBalance(),0);
 		
+		
+		//Now testing if payingPlayer must also pay 1000 if buyingPlayer owns 2 fleet fields!
+		
+		//Setting field2 as number 20 from board list..
+		field2 = (Fleet) board.getField(20);
+		
+		//Setting buyingPlayers account balance, so he can buy the field
+		buyingPlayer.setBalance(field2.getPrice());
+
+		//Player buys field
+		field2.buyField(buyingPlayer);
+		
+		//Making sure player is now owner of two fleet fields
+		assertEquals(field1.getOwner(),buyingPlayer);
+		assertEquals(field2.getOwner(),buyingPlayer);
+		
+		//Making sure that getRent now is 1000
+		assertEquals(field1.getRent(),1000);
+		
+		
+		//Last test, does payingPlayer have to pay 2000 if buyingPlayer owns 3 fleets ?
+		
+		//Field3 is now number 21 from board, a fleet object
+		Fleet field3 = (Fleet) board.getField(21);
+		
+		//Setting buyingPlayers account balance
+		buyingPlayer.setBalance(field3.getPrice());
+		
+		//Player buys field
+		field3.buyField(buyingPlayer);
+		
+		//Making sure player is now owner of 3 fleet fields!
+		assertEquals(field1.getOwner(),buyingPlayer);
+		assertEquals(field2.getOwner(),buyingPlayer);
+		assertEquals(field3.getOwner(),buyingPlayer);
+		
+		//Making sure that getRent is now 2000!
+		assertEquals(field1.getRent(),2000);
+		assertEquals(field2.getRent(),2000);
+		assertEquals(field3.getRent(),2000);
 				
 		
 		

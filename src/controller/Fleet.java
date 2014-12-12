@@ -21,17 +21,38 @@ public class Fleet extends Ownable {
 	
 	
 
-/**
- * Returns randomized rent between among rent variables
- */
+
 	public int getRent() {
 		int rent = 0;
+		switch(super.getOwner().getFleetOwned()) {
+		case 1: rent = RENT_1;
+				break;
+		case 2: rent = RENT_2;
+				break;
+		case 3: rent = RENT_3;
+				break;
+		case 4: rent = RENT_4;
+				break;
+		};
 		return rent;		
+	}
+	@Override
+	public void buyField(Player player) {
+		super.buyField(player);
+		player.addFleet();
 	}
 
 	@Override
 	public void landOnField(Player player) {
-		System.out.println(player.getName() + " has landed on fleet");
+		if (!(player == this.getOwner())) {
+			payRent(player);
+		}
+	}
+
+
+	private void payRent(Player player) {
+		player.withdraw(this.getRent());
+		
 	}	
 
 }

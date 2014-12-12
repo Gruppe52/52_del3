@@ -48,6 +48,8 @@ public class Board {
 	public Field[] getFields() {
 		return fields;
 	}
+	
+	
 	public void resetOwnerShip(Player player) {
 		for (int i = 0; i < fields.length; i++) {
 			if( fields[i] instanceof Ownable ) {
