@@ -136,5 +136,10 @@ public class MatadorGUI {
 	public void playerWon(Player winningPlayer) {
 		GUI.showMessage(winningPlayer.getName() + Texts.texts[18]);
 	}
+
+	public void landedOnRefuge(Player player) {
+		GUI.showMessage(player.getName() + Texts.texts[19]);
+		
+	}
 	
 }

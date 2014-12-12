@@ -77,8 +77,7 @@ public class GameController {
 					
 					//Check if a player has died - could be nicer without gui pass perhaps
 					checkIfPlayerIsDead(playerList, matadorGUI);
-					
-					System.out.println(playerList.getPlayer(i).getName());
+				
 					
 				}
 			}		
