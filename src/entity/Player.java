@@ -12,6 +12,7 @@ public class Player extends Account {
 	private int carField;
 	private boolean hasWon = false;
 	private int fleetOwned;
+	private int diceSum;
 	
 	/** 
 	 * @return Returnerer spillerens navn
@@ -90,6 +91,16 @@ public class Player extends Account {
 	
 	public int getFleetOwned() {
 		return fleetOwned;
+	}
+
+	public void setDice(int diceSum) {
+		this.diceSum = diceSum;
+		
+	}
+
+	public int getDice() {
+		
+		return diceSum;
 	}
 
 

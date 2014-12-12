@@ -64,7 +64,10 @@ public class GameController {
 					int diceSum = diceCup.getSum();			
 					
 					//Sets the players carField variable, used for getting the car around on board
-					currentPlayer.addCarField(diceSum);					
+					currentPlayer.addCarField(diceSum);	
+					
+					//Sets the players current diceThrow, used by LaborCamp to find fee
+					currentPlayer.setDice(diceSum);
 					
 					//Moves car for the current player who has just thrown dice
 					matadorGUI.moveCar(currentPlayer);	

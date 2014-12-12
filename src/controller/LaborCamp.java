@@ -11,10 +11,10 @@ import boundary.MatadorGUI;
 import entity.Player;
 
 public class LaborCamp extends Ownable {
-	int baseRent;
+	int baseRent = 100;
 	public LaborCamp(int fieldNumber, String fieldName, int price, int baseRent) {
 		super(fieldNumber, fieldName, price);
-		this.baseRent = baseRent;
+		this.baseRent = 100;		//Had trouble figuring out how to accept the initial baseRent = 100 value ?
 	}
 
 	@Override
@@ -24,19 +24,19 @@ public class LaborCamp extends Ownable {
 
 	@Override
 	public void landOnField(Player player) {
-		System.out.println("landed on laborcamp");
-		
+		System.out.println("landed on laborcamp");		
 	}
 
 	@Override
 	public void landOnField(Player player, MatadorGUI matadorGUI) {
-		// TODO Auto-generated method stub
+		//Gets the dice	for player
+		int dice = player.getDice();
 		
-	}
-
-
-	/* Der skal betales en afgift til ejeren. Beløbet bestemmes ved at slå 
-      på terninger  og gange resultatet med 100. dette tal skal så ganges med laborcamps (baseRent? -stefan ) */
-	
-	
+		int totalRent = dice * baseRent;
+		
+		player.withdraw(totalRent);
+		
+		matadorGUI.landedOnLaborCamp(player);
+		
+	}	
 }

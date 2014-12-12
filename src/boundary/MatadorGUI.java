@@ -141,5 +141,10 @@ public class MatadorGUI {
 		GUI.showMessage(player.getName() + Texts.texts[19]);
 		
 	}
+
+	public void landedOnLaborCamp(Player player) {
+		GUI.showMessage(player.getName() + Texts.texts[20]);
+		
+	}
 	
 }

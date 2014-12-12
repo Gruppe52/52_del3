@@ -26,6 +26,7 @@ public class Texts {
 		"'s ejendom, og skal betale ",
 		" har ingen penge tilbage, og er ude af spillet!", //[17]
 		" har vundet spillet, tillykke!", 	//[18]
-		" har landet på et tilflugtssted, og modtager en bonus"
+		" har landet på et tilflugtssted, og modtager en bonus",
+		" har landet på en arbejdslejr, og skal betale 100 x terningeøjne"
 		};
 }
