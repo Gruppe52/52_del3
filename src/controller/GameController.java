@@ -7,7 +7,7 @@ import entity.PlayerList;
 import entity.Player;
 import entity.DiceCup;
 /**
- * SpilController som uddelegerer opgaver
+ * GameController for monopoly like game
  * @author 52
  */
 public class GameController {
@@ -22,7 +22,9 @@ public class GameController {
 
 	
 	/**
-	 * Initialiserer spillet
+	 * Initializes game
+	 * Creates board, playerList object with numberOfPlayers, ask's for names, and sets cars on board
+	 * Then entering gameLoop
 	 */
 	public void init() {
 		
@@ -73,24 +75,32 @@ public class GameController {
 					//Update players money after LandOnField method has been called (usually LandOnField messes with accounts money)					
 					matadorGUI.updateMoney(playerList);
 					
-					//Check if a player has died
-					checkIfPlayerIsDead(playerList, matadorGUI);					
+					//Check if a player has died - could be nicer without gui pass perhaps
+					checkIfPlayerIsDead(playerList, matadorGUI);
+					
+					System.out.println(playerList.getPlayer(i).getName());
 					
 				}
 			}		
 		}
-//		gameEnded = true;
-//		if(gameEnded) {
+		gameEnded = true;	//Used for testing purposes
 		winningPlayer = findWinningPlayer(playerList);
 		matadorGUI.playerWon(winningPlayer);	
-		System.out.println(winningPlayer.getName());
 	}
 	
+	/**
+	 * Used for testing purposes
+	 * @return Returns boolean variable true if the game has ended.
+	 */
 	public boolean getGameEnded() {
 		return gameEnded;
 	}
 	
-	//Checks if a player is dead according to game rules
+	/**
+	 * Checks if a player is dead according to game rules
+	 * @param playerList
+	 * @param matadorGUI
+	 */
 	public void checkIfPlayerIsDead(PlayerList playerList, MatadorGUI matadorGUI) {		
 	for (int i = 0; i < playerList.getPlayers().length; i++) {
 		if(playerList.getPlayer(i).getBalance() <= 0) {
@@ -99,7 +109,6 @@ public class GameController {
 			}
 		}
 	}
-	
 	/**
 	 * Finds the player object that has won in the playerList.
 	 * @param playerlist
@@ -109,13 +118,37 @@ public class GameController {
 		Player winningPlayer = new Player();
 		//We have already established that someone has won, meaning only one player is alive
 		for (int i = 0; i < playerList.getPlayers().length; i++) {
-			if(playerList.getPlayer(i).getDeath() == false) {
+			System.out.println(i);
+			System.out.println(playerList.getPlayers().length);
+			if(playerList.getPlayer(i).getHasWon()) {
+				System.out.println("Nogen har vundet");
 				winningPlayer = playerList.getPlayer(i);
 			}
 		}
 		return winningPlayer;
 	}
 	
+	public int testForLoops() {
+		int x = 0;
+		for (int i = 0; i < 10; i++) {
+			if(i == 5) {
+				x = 10;
+			}
+		}
+		return x;
+	}	
+	
+	/**
+	 * This method finds one player who has won, and sets their hasWon boolean variable to true
+	 * @param playerList
+	 */
+	public void setPlayerHasWon(PlayerList playerList) {		
+		for (int i = 0; i < playerList.getPlayers().length; i++) {
+			if(playerList.getPlayer(i).getDeath() == false) {
+				playerList.getPlayer(i).setHasWon(true);
+			}
+		}
+	}
 	/**
 	 * Check's if there is only one player left alive in the playerlist
 	 * @param playerList2
@@ -137,10 +170,8 @@ public class GameController {
 		return hasSomeoneWon;
 	}
 	
-	
 	public void resetOwner(Player player) {		
 	}
-	
 	
 	@Deprecated
 	public boolean checkIfPlayerCanHaveTurn(Player player) {

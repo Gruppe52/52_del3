@@ -2,7 +2,7 @@
  * Tekster klassen er lavet for at lette evt. oversættelse af spillet, 
  * og for at have disse strenge kun et sted
  */
-package boundary;
+package entity;
 
 public class Texts {
 	public static final String[] texts =
@@ -23,8 +23,8 @@ public class Texts {
 		"Du har ikke penge nok på kontoen til at købe",
 		"Du landede på et tax field og skal betale ",
 		" har landet på ",
-		" ejendom, og skal betale ",
-		" har fået under eller 0 på kontoen, og er ude af spillet!", //[17]
+		"'s ejendom, og skal betale ",
+		" har ingen penge tilbage, og er ude af spillet!", //[17]
 		" har vundet spillet, tillykke!" 	//[18]
 		};
 }

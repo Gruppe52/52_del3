@@ -45,14 +45,30 @@ public class TestIfPlayerCanWin {
 		}
 		
 		//Sets players death
-		for (int i = 0; i < playerList.getPlayers().length; i++) {
-			gameController.checkIfPlayerIsDead(playerList.getPlayer(i));
-		}	
+		gameController.checkIfPlayerIsDead(playerList);
+
 		
 		
 		/***Test***/		
 		//Postcondition
-		assertEquals(gameController.checkIfPlayerHasWon(playerList),true);		
+		assertEquals(gameController.checkIfPlayerHasWon(playerList),true);	
+		
+		assertEquals(playerList.getPlayer(0).getDeath(),false);
+		assertEquals(playerList.getPlayer(1).getDeath(),true);
+		assertEquals(playerList.getPlayer(2).getDeath(),true);
+		
+		
+		gameController.setPlayerHasWon(playerList);
+		
+		assertEquals(playerList.getPlayer(0).getDeath(),false);
+		
+		assertEquals(gameController.testForLoops(),10);
+		
+		//What ??
+		gameController.findWinningPlayer(playerList);
+//		assertEquals(gameController.findWinningPlayer(playerList),playerList.getPlayer(0));
+		
+//		assertEquals(gameController.findWinningPlayer(playerList),playerList.getPlayer(0));
 	}
 	
 	public PlayerList getPlayerList() {

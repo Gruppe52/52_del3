@@ -9,6 +9,7 @@ package boundary;
 
 import entity.PlayerList;
 import entity.Player;
+import entity.Texts;
 import boundaryToMatador.GUI;
 
 public class MatadorGUI {
