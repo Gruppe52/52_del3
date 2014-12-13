@@ -4,6 +4,8 @@
  */
 package entity;
 
+import boundary.MatadorGUI;
+
 public class PlayerList {
 	private Player[] players;
 	
@@ -29,6 +31,36 @@ public class PlayerList {
 		return players[index];
 	}
 	
+	public void setWinningPlayer() {
+		int x = 0;
+		for (int i = 0; i < players.length; i++) {
+			if (players[i].getDeath()) {
+				x++;
+			}
+		}
+		if ((players.length - x) == 1) {
+			for (int i = 0; i < players.length; i++) {
+				if(!players[i].getDeath()) {
+					players[i].setHasWon(true);
+				}
+			}
+		}
+	}
+	/**
+	 * Finds the player object that has won in the playerList.
+	 * @return
+	 */
+	public Player getWinningPlayer() {
+		Player winningPlayer = new Player();
+		for (int i = 0; i < players.length; i++) {
+			System.out.println(players[i].getName());
+			if(players[i].getHasWon()) {
+				winningPlayer = players[i];
+			}
+		}
+		return winningPlayer;
+	}
+	
 	public boolean isWinner(){
 		for (int i=0;i<players.length;i++){
 			if (players[i].isWinner())
@@ -48,5 +80,17 @@ public class PlayerList {
 			playersInfo = getPlayer(i).toString();
 		}
 		return playersInfo;
+	}
+	/**
+	 * Checks if a player is dead according to game rules
+	 * @param matadorGUI
+	 */
+	public void checkIfPlayerIsDead(MatadorGUI matadorGUI) {
+		for (int i = 0; i < players.length; i++) {
+			if(players[i].getBalance() <= 0) {
+				players[i].setDeath(true);
+				matadorGUI.playerDied(players[i]);
+			}
+		}		
 	}
 }

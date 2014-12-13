@@ -45,7 +45,7 @@ public class TestIfPlayerCanWin {
 		}
 		
 		//Sets players death
-		gameController.checkIfPlayerIsDead(playerList);
+		//playerList.checkIfPlayerIsDead(matadorGUI);
 
 		
 		

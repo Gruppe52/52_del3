@@ -79,14 +79,16 @@ public class GameController {
 					matadorGUI.updateMoney(playerList);
 					
 					//Check if a player has died - could be nicer without gui pass perhaps
-					checkIfPlayerIsDead(playerList, matadorGUI);
-				
+					//Maybe something like if(playerHasDied) { matadorGUI.playerdied(player)				
+					playerList.checkIfPlayerIsDead(matadorGUI);
+					
 					
 				}
 			}		
 		}
 		gameEnded = true;	//Used for testing purposes
-		winningPlayer = findWinningPlayer(playerList);
+		playerList.setWinningPlayer();
+		winningPlayer = playerList.getWinningPlayer();
 		matadorGUI.playerWon(winningPlayer);	
 	}
 	
@@ -98,11 +100,13 @@ public class GameController {
 		return gameEnded;
 	}
 	
+	
 	/**
 	 * Checks if a player is dead according to game rules
 	 * @param playerList
 	 * @param matadorGUI
 	 */
+	@Deprecated
 	public void checkIfPlayerIsDead(PlayerList playerList, MatadorGUI matadorGUI) {		
 	for (int i = 0; i < playerList.getPlayers().length; i++) {
 		if(playerList.getPlayer(i).getBalance() <= 0) {
@@ -113,9 +117,11 @@ public class GameController {
 	}
 	/**
 	 * Finds the player object that has won in the playerList.
+	 * Has been moved to PlayerList class, according to information expert principle
 	 * @param playerlist
 	 * @return winning player object
 	 */
+	@Deprecated
 	public Player findWinningPlayer(PlayerList playerlist) {
 		Player winningPlayer = new Player();
 		//We have already established that someone has won, meaning only one player is alive
@@ -129,16 +135,6 @@ public class GameController {
 		}
 		return winningPlayer;
 	}
-	
-	public int testForLoops() {
-		int x = 0;
-		for (int i = 0; i < 10; i++) {
-			if(i == 5) {
-				x = 10;
-			}
-		}
-		return x;
-	}	
 	
 	/**
 	 * This method finds one player who has won, and sets their hasWon boolean variable to true
