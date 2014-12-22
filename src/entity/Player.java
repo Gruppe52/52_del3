@@ -13,6 +13,7 @@ public class Player extends Account {
 	private boolean hasWon = false;
 	private int fleetOwned;
 	private int diceSum;
+	private boolean deathShown = false;
 	
 	/** 
 	 * @return Returnerer spillerens navn
@@ -101,6 +102,15 @@ public class Player extends Account {
 	public int getDice() {
 		
 		return diceSum;
+	}
+
+	public void setDeathShown(boolean b) {
+		deathShown  = b;
+		
+	}
+
+	public boolean getDeathShown() {		
+		return deathShown;
 	}
 
 

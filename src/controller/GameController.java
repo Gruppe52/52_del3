@@ -80,8 +80,7 @@ public class GameController {
 					//Check if a player has died - could be nicer without gui pass perhaps
 					//Maybe something like if(playerHasDied) { matadorGUI.playerdied(player)				
 					playerList.checkIfPlayerIsDead(matadorGUI, board);
-
-					
+										
 				}
 			}		
 		}

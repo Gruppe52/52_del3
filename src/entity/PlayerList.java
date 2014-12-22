@@ -89,7 +89,10 @@ public class PlayerList {
 		for (int i = 0; i < players.length; i++) {
 			if(players[i].getBalance() <= 0) {
 				players[i].setDeath(true);
-				matadorGUI.playerDied(players[i]);
+				if(!players[i].getDeathShown()) {
+					matadorGUI.playerDied(players[i]);
+					players[i].setDeathShown(true);
+				}				
 				board.resetOwnerShip(players[i]);
 			}
 		}		

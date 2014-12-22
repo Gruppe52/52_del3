@@ -130,6 +130,7 @@ public class MatadorGUI {
 
 	public void playerDied(Player deadPlayer) {
 		GUI.showMessage(deadPlayer.getName() + Texts.texts[17]);
+		GUI.removeCar(deadPlayer.getCarField(), deadPlayer.getName());
 		
 	}
 
