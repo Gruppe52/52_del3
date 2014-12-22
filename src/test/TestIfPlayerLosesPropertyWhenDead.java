@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import boundary.MatadorGUI;
+import controller.Field;
 import controller.GameController;
 import controller.Territory;
 import entity.Board;
@@ -21,37 +22,46 @@ public class TestIfPlayerLosesPropertyWhenDead {
 	private MatadorGUI matadorGUI = new MatadorGUI();
 	private Player player;
 	private Board board = new Board();
+	private Field fields[];
 
 	
 	
 	@Test
 	public void test() {
 		playerList.getPlayer(0).setName("Test player");
+
+		assertEquals(playerList.getPlayer(0).getName(), "Test player");
+		
 		player = playerList.getPlayer(0);
 //		player.setName("TestPlayer");
 		//Preconditions
 //		player.setBalance(5000);
-		territory.buyField(playerList.getPlayer(0));
 		
-		//Is player owner now ?
-		assertEquals(territory.getOwner(),playerList.getPlayer(0));
+//		
+//		fields = board.getFields();
+//		
+//		fields[1].landOnField(playerList.getPlayer(0));
 		
-		//Now we make the player dead by game rules
-		player.setBalance(0);
+		territory = (Territory) board.getField(2);
 		
-		matadorGUI.playerDied(playerList.getPlayer(0));
+		territory.landOnField(playerList.getPlayer(0));	
 		
-		//Test	
-		
-		//Run gameLoop once, which should check if players are dead, and reset property
-		gameController.gameLoop(playerList);
-		
-		System.out.println(player.getDeath());
+		territory.buyField(playerList.getPlayer(0));		
 				
-		assertEquals(player.getDeath(),true);
-
+		//Is player owner now ?
+		assertEquals(territory.getOwner().getName(),"Test player");
+		
+		//Now we make the player dead 
+		
+		player.setDeath(true);
+		
+		assertEquals(player.getDeath(), true);
+		
 		board.resetOwnerShip(player);
 		
+		
+		assertEquals(territory.getOwner(),null);
+				
 		//Postconditions
 		
 		

@@ -1,5 +1,6 @@
-package entity;
+package controller;
 
+import entity.Player;
 import boundary.MatadorGUI;
 
 /**

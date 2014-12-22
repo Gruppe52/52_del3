@@ -1,7 +1,6 @@
 package controller;
 
 import boundary.MatadorGUI;
-import entity.Field;
 import entity.Player;
 
 public class Refuge extends Field {

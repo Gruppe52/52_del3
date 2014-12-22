@@ -2,7 +2,6 @@ package controller;
 
 import boundary.MatadorGUI;
 import entity.Board;
-import entity.Field;
 import entity.PlayerList;
 import entity.Player;
 import entity.DiceCup;
@@ -80,8 +79,8 @@ public class GameController {
 					
 					//Check if a player has died - could be nicer without gui pass perhaps
 					//Maybe something like if(playerHasDied) { matadorGUI.playerdied(player)				
-					playerList.checkIfPlayerIsDead(matadorGUI);
-					
+					playerList.checkIfPlayerIsDead(matadorGUI, board);
+
 					
 				}
 			}		

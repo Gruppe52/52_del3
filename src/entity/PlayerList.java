@@ -85,11 +85,12 @@ public class PlayerList {
 	 * Checks if a player is dead according to game rules
 	 * @param matadorGUI
 	 */
-	public void checkIfPlayerIsDead(MatadorGUI matadorGUI) {
+	public void checkIfPlayerIsDead(MatadorGUI matadorGUI, Board board) {
 		for (int i = 0; i < players.length; i++) {
 			if(players[i].getBalance() <= 0) {
 				players[i].setDeath(true);
 				matadorGUI.playerDied(players[i]);
+				board.resetOwnerShip(players[i]);
 			}
 		}		
 	}

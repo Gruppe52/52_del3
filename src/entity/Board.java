@@ -3,6 +3,7 @@
  */
 
 package entity;
+import controller.Field;
 import controller.Fleet;
 import controller.LaborCamp;
 import controller.Ownable;
@@ -16,8 +17,7 @@ public class Board {
 	Field[] fields = new Field[23];	//Set as 23, because field[0] and field[1] doesnt exist or is used (not sure it's the right way to do this.. )
 	
 	public Field getField(int FieldNr) {
-		Field Field = fields[FieldNr];
-		return Field;
+		return fields[FieldNr];
 	}
 	
 	public Board() {
@@ -51,9 +51,15 @@ public class Board {
 	
 	
 	public void resetOwnerShip(Player player) {
+		Ownable field;
 		for (int i = 0; i < fields.length; i++) {
 			if( fields[i] instanceof Ownable ) {
-//				fields[i].resetOwner(player);				
+				field = (Ownable)fields[i];
+				if(field.getOwner() == player) {
+					field.setOwner(null);
+				}
+				
+				
 			}
 		}
 		

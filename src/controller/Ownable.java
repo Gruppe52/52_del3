@@ -1,6 +1,5 @@
 package controller;
 import boundary.MatadorGUI;
-import entity.Field;
 import entity.Player;
 
 /**
@@ -62,6 +61,11 @@ public abstract class Ownable extends Field {
 			player.withdraw(getRent());
 			getOwner().deposit(getRent());
 		}
+	}
+
+	public void setOwner(Player player) {
+		owner = player;
+		
 	}
 }
 
